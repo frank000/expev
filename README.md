@@ -1,6 +1,6 @@
 # expev
 
-Consiste me estudos de analise e desenvovlimento de app android em Flutter para controle de despesas pessoais.
+Consiste em estudos de analise e desenvovlimento de app android em Flutter para controle de despesas pessoais.
 
 ### "O conhecimento é o melhor porto seguro para qualquer tempestade."
 
