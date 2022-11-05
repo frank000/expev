@@ -44,14 +44,21 @@ class Chart extends StatelessWidget {
       child: SingleChildScrollView(
         child: Container(
           width: 321,
-          child: Row(
-            children: groupedTransactions.map((tr) {
-              return ChartBar(
-                label: tr['day'].toString(),
-                value: double.parse(tr['value'].toString()),
-                percent: (tr['value'] as double) / _weekTotalValue,
-              );
-            }).toList(),
+          child: Padding(
+            padding: EdgeInsets.all(5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: groupedTransactions.map((tr) {
+                return Flexible(
+                  fit: FlexFit.tight,
+                  child: ChartBar(
+                    label: tr['day'].toString(),
+                    value: double.parse(tr['value'].toString()),
+                    percent: (tr['value'] as double) / _weekTotalValue,
+                  ),
+                );
+              }).toList(),
+            ),
           ),
         ),
       ),
