@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:expev/components/chart.dart';
 import 'package:expev/components/transaction_form.dart';
 import 'package:expev/components/transaction_list.dart';
 import 'package:expev/models/transaction.dart';
@@ -49,18 +50,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Transaction> _transactions = [
-    // Transaction(
-    //   id: '1',
-    //   title: 'Tenis de corrida',
-    //   value: 310.50,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '2',
-    //   title: 'Conta de Luz',
-    //   value: 202.30,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: '1',
+      title: 'Tenis de corrida',
+      value: 310.50,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '2',
+      title: 'Conta de Luz',
+      value: 202.30,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
+    Transaction(
+      id: '3',
+      title: 'hotrl',
+      value: 150,
+      date: DateTime.now().subtract(Duration(days: 5)),
+    ),
   ];
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -77,6 +84,16 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     Navigator.of(context).pop();
+  }
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((element) {
+      return element.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
   }
 
   _openTrasnsationFormModal(BuildContext context) {
@@ -107,14 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text("Grafico"),
-                elevation: 5,
-              ),
-            ),
+            Chart(recentTransaction: _recentTransactions),
             TransactionList(transactions: _transactions),
           ],
         ),
