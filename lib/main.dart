@@ -17,8 +17,10 @@ class ExpenvApp extends StatelessWidget {
     final ThemeData tema = ThemeData();
     return MaterialApp(
       theme: tema.copyWith(
-        colorScheme: tema.colorScheme
-            .copyWith(primary: Colors.purple, secondary: Colors.amber),
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.purple,
+          secondary: Colors.amber,
+        ),
         textTheme: tema.textTheme.copyWith(
           headline6: TextStyle(
             fontFamily: 'OpenSans',
@@ -27,10 +29,10 @@ class ExpenvApp extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        appBarTheme: AppBarTheme(
-          titleTextStyle: TextStyle(
-            fontFamily: 'OpenSans',
-            fontSize: 20,
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: const TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
