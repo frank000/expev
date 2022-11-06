@@ -49,32 +49,39 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Transaction> _transactions = [
-    Transaction(
-      id: '1',
-      title: 'Tenis de corrida',
-      value: 310.50,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '2',
-      title: 'Conta de Luz',
-      value: 202.30,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-    Transaction(
-      id: '3',
-      title: 'hotrl',
-      value: 150,
-      date: DateTime.now().subtract(Duration(days: 5)),
-    ),
-  ];
-  _addTransaction(String title, double value) {
+  List<Transaction> _transactions = [];
+  // [
+  //   Transaction(
+  //     id: '1',
+  //     title: 'Tenis de corrida',
+  //     value: 310.50,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: '4',
+  //     title: 'carro',
+  //     value: 10000.500,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: '2',
+  //     title: 'Conta de Luz',
+  //     value: 202.30,
+  //     date: DateTime.now().subtract(Duration(days: 3)),
+  //   ),
+  //   Transaction(
+  //     id: '3',
+  //     title: 'hotrl',
+  //     value: 150,
+  //     date: DateTime.now().subtract(Duration(days: 5)),
+  //   ),
+  // ];
+  _addTransaction(String title, double value, DateTime selectedDate) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
-      date: DateTime.now(),
+      date: selectedDate,
     );
     setState(() {
       if (newTransaction.title.isNotEmpty &&
