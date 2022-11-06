@@ -93,6 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
+  _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((tr) => tr.id == id);
+    });
+  }
+
   List<Transaction> get _recentTransactions {
     return _transactions.where((element) {
       return element.date.isAfter(
@@ -132,7 +138,8 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Chart(recentTransaction: _recentTransactions),
-            TransactionList(transactions: _transactions),
+            TransactionList(
+                transactions: _transactions, onDelete: _deleteTransaction),
           ],
         ),
       ),
